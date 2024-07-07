@@ -1,0 +1,129 @@
+.DailyWeather{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.dwd-main {
+  width: 60%;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #1E6E93;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.dwd-date {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.dwd-condition-icon img {
+  width: 50px;
+  height: 50px;
+}
+
+.dwd-temp {
+  font-size: 2.5em;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.dwd-temp span {
+  font-size: 1.2em;
+  vertical-align: super;
+}
+
+.dwd-condition-text {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+ul li {
+  font-size: 1em;
+}
+
+
+.dwd-hours {
+  display: flex;
+  overflow-x: scroll;
+  scrollbar-color: blue;
+  padding: 10px;
+  /* background-color: #f0f4f8; */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width:60%;
+  box-sizing: border-box;
+  
+}
+
+.dwd-hour {
+  flex: 0 0 auto;
+  width: 100px;
+  margin-right: 10px;
+  padding: 10px;
+  background-color: #548ead3e;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.dwd-hour p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: rgb(233, 235, 237);
+}
+
+.dwd-hour img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 5px;
+}
+
+
+
+
+@media (max-width: 800px) {
+  .dwd-hours {
+    width: 90%;
+  }
+  .dwd-main{
+    width:90%;
+  }
+}
+/* index.css or main CSS file */
+
+.dwd-hours::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.dwd-hours::-webkit-scrollbar-track {
+  background:rgba(19, 183, 216, 0.158);
+  border-radius: 10px;
+}
+
+.dwd-hours::-webkit-scrollbar-thumb {
+  background: #08a7d7;
+  border-radius: 10px;
+}
+
+.dwd-hours::-webkit-scrollbar-thumb:hover {
+  background: #0094f7;
+}

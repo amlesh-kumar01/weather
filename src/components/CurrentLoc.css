@@ -1,0 +1,83 @@
+.CurrentLoc {
+  width: 60%;
+  padding: 50px;
+  box-sizing: border-box;
+  /* border: 2px solid rgb(92, 176, 189); */
+  /* Horizontal offset, vertical offset, blur radius, spread radius, color */
+  box-shadow: 5px 5px 25px 0 rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+
+/*to style the location part*/
+.current-location {
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+  justify-content: space-between;
+  padding:0 10px 0 10px;
+  /* border: 2px solid black; */
+  font-weight: 500;
+}
+/* to style the weather condition part */
+.current-weather-condition {
+  display: flex;
+  flex-direction: column;
+}
+
+/* to style the temperature-section */
+.current-temp {
+  display: grid;
+  grid-template-columns: max-content max-content max-content max-content;
+  align-items: baseline;
+}
+.current-temp img {
+  width: 100%;
+}
+.current-temp div {
+  font-size: 5em;
+  font-weight: 500;
+  padding: 10px 2px 10px 10px;
+}
+.current-temp span {
+  padding: 10px 10px 10px 0px;
+  font-size: 1.4em;
+  font-weight: 500;
+}
+.current-temp ul {
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+  align-self: center;
+  font-size: 1.4em;
+  font-weight: 500;
+}
+.current-temp ul li {
+  position: relative;
+}
+
+/* to style the weather condition text */
+.current-condition {
+  font-size: 2em;
+  font-weight: 500;
+  padding: 0px 0px 0px 10px;
+}
+
+/* to style the other information */
+.current-other ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 20px 0 20px 0;
+  font-size: 1em;
+  gap: 10px;
+  font-weight: 400;
+  list-style: none;
+  padding: 0 10px 0 10px;
+}
+
+@media (max-width: 800px) {
+  .CurrentLoc {
+    width: 90%;
+    padding: 0px;
+  }
+}

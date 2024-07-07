@@ -1,0 +1,67 @@
+/* days.css */
+
+.days {
+    display: flex;
+    overflow-x: scroll;
+    scrollbar-color: blue;
+    padding: 10px;
+    /* background-color: #f0f4f8; */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    box-sizing: border-box;
+  }
+  
+  .day {
+    flex: 0 0 auto;
+    width: 100px;
+    margin-right: 10px;
+    padding: 10px;
+    background-color: #548ead3e;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;    
+    text-decoration: none;
+  }
+  
+  .day p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: rgb(233, 235, 237);
+  }
+  
+  .day img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+  }
+  
+  
+  
+  
+@media (max-width: 800px) {
+    .days {
+      width: 90%;
+    }
+  }
+  /* index.css or main CSS file */
+
+.days::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .days::-webkit-scrollbar-track {
+    background:rgba(19, 183, 216, 0.158);
+    border-radius: 10px;
+  }
+  
+  .days::-webkit-scrollbar-thumb {
+    background: #08a7d7;
+    border-radius: 10px;
+  }
+  
+  .days::-webkit-scrollbar-thumb:hover {
+    background: #0094f7;
+  }
+  
