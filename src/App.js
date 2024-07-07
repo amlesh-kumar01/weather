@@ -1,4 +1,4 @@
-import React, { useState, useEffect,createContext } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { getWeatherData } from "./data/weatherapi";
 import { getLocation } from "./data/locationapi";
@@ -6,8 +6,9 @@ import Header from "./components/Header";
 import CurrentLoc from "./components/CurrentLoc";
 import Days from "./components/Days";
 import Hours from "./components/Hours";
-import { BrowserRouter as Router, Routes, Route,Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import DailyWeather from "./components/DailyWeather";
+import ErrorMessage from "./components/ErrorMessage";
 
 function App() {
   const [currentWeatherData, setCurrentWeatherData] = useState(null);
@@ -24,6 +25,7 @@ function App() {
       setCity((await getLocation()).city);
       setCurrentLoc((await getLocation()).city);
     } catch (error) {
+      setError(error.message);
       console.log("Error in fetching location data:", error);
     }
   };
@@ -61,7 +63,9 @@ function App() {
 
   return (
     <div className="App">
-
+{error ? (
+        <ErrorMessage message={error} />
+      ) : (
       <Router>
         <Routes>
           <Route
@@ -106,7 +110,7 @@ function App() {
             }
           />
         </Routes>
-      </Router>
+      </Router>)}
     </div>
   );
 }
