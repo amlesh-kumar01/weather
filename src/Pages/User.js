@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './User.css'
 function User({setUserStatus}) {
     const navigate = useNavigate();
@@ -22,6 +23,7 @@ function User({setUserStatus}) {
         <button className="logout-button" onClick={handleLogout}>
             Logout
         </button>
+        <Link to="/" className='login-link'>Back to Home</Link>
     </div>
 </>
 
