@@ -23,8 +23,10 @@ const Signup = () => {
           navigate('/login')
       }, 1000)
       }
+      setMessage("Signup Successful")
       return (message);
     } catch (error) {
+      setMessage("Try Different Username")
       return ( error.message);
     }
   };
@@ -42,7 +44,7 @@ const Signup = () => {
     // signupUser(formData);
     const msg = await signupUser(formData);
     console.log(msg);
-    setMessage("Try Different Username")
+    
     
   };
 
