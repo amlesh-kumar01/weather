@@ -18,7 +18,7 @@ function User({setUserStatus}) {
         <h2 className="welcome-message">
             Welcome {localStorage.getItem("username")}
         </h2>
-        <p>Here You can change you Account Setting </p>
+        <p>Here, You can change your Account Setting. </p>
         <button className="logout-button" onClick={handleLogout}>
             Logout
         </button>
