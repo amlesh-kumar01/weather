@@ -41,42 +41,45 @@ const Signup = () => {
     e.preventDefault();
     // signupUser(formData);
     const msg = await signupUser(formData);
-    setMessage(msg)
+    console.log(msg);
+    setMessage("Try Different Username")
     
   };
 
   return (
     <div className="signup-container">
-      <form className="signup-form" onSubmit={handleSubmit}>
-        <h2>Sign Up</h2>
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Sign Up</button>
-
-      <h3 style={{color:"black"}}>{message}</h3>
-      <Link to='/'>Back to Home</Link>
-      </form>
+  <form className="signup-form" onSubmit={handleSubmit}>
+    <h2 className="signup-title">Sign Up</h2>
+    <div className="signup-form-group">
+      <label className="signup-label" htmlFor="username">Username</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        className="signup-input"
+        value={formData.username}
+        onChange={handleChange}
+        required
+      />
     </div>
+    <div className="signup-form-group">
+      <label className="signup-label" htmlFor="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        className="signup-input"
+        value={formData.password}
+        onChange={handleChange}
+        required
+      />
+    </div>
+    <button type="submit" className="signup-button">Sign Up</button>
+    <h3 className="signup-message">{message}</h3>
+    <Link to='/' className="signup-link">Back to Home</Link>
+  </form>
+</div>
+
   );
 };
 

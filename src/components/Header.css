@@ -3,8 +3,8 @@
     top: 0;
     width: 100%;
     display: flex;
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(50px);
+    background: rgba(255, 255, 255, 0.147);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     justify-content: space-between;
     height: 60px;
@@ -66,34 +66,59 @@
   .loc-search:hover, .add-loc:hover {
     background-color: #0056b3;
   }
-  
-  .login-link {
-    color: #007bff;
+  .userStatus {
+    margin-right: 10px;
+    height: 36px;
+    width: max-content;
+    overflow: hidden;  
+    display: flex;
+    align-items: center;  
+    justify-content: center;  
+    background-color: #007bff;  
+    border-radius: 5px;  
+    box-sizing: border-box;
+}
+
+.userStatus a {
+    color: white;
     text-decoration: none;
     font-size: 1em;
-  }
-  
-  .login-link:hover {
-    text-decoration: underline;
-  }
+    padding: 0 5px;  
+    white-space: nowrap;  
+    overflow: hidden; 
+    text-overflow: ellipsis;  
+    max-width: 100%; 
+    
+}
+
+.userStatus:hover{
+  background-color: #0056b3;
+}
+
+
   
 
 
   .saved-location-container {
-    width: 100%;
+    width: 60%;
     margin-top: 60px;
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
   }
   
   .saved-location {
     display: flex;
     overflow-x: auto;
-    width: 60%;
     background-color: inherit;
     white-space: nowrap;
     padding: 10px 0;
+  }
+  @media (max-width: 800px){
+    .saved-location-container{
+      width:90%;
+    }
   }
   
   .savedLocs {
@@ -119,15 +144,15 @@
   }
   
   .current-loc {
-    background-color: #007bff;
+    background-color: #23a6e7a9;
     color: white;
-    min-width: 200px;
+    width: 200px;
     margin-right:20px;
   }
   
   .saved-loc {
-    background-color: #f0f0f0;
-    color: black;
+    background-color: #23a6e7a9;
+    color: white;
     margin-right: 5px; /* Smaller margin between saved location and delete button */
     display: flex;
     flex-direction: column;
@@ -139,7 +164,7 @@
     margin:0;
   }
   .delete-btn {
-    background-color: #f0f0f0;
+    background-color: #23a6e7a9;
     border: none;
     cursor: pointer;
     padding: 5px 10px;
@@ -154,5 +179,54 @@
     width: 16px;
     height: 16px;
   }
+
+  .saved-location::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .saved-location::-webkit-scrollbar-track {
+    background:rgba(19, 183, 216, 0.158);
+    border-radius: 10px;
+  }
+  
+  .saved-location::-webkit-scrollbar-thumb {
+    background: #08a7d7;
+    border-radius: 10px;
+  }
+  
+  .saved-location::-webkit-scrollbar-thumb:hover {
+    background: #0094f7;
+  }
+
+
+
+
+  /* making responsive navbar */
+  @media(max-width:750px){
+    .header-title{
+      display: none;
+    }
+    .userStatus{
+      width:120px;
+    }
+  }
+  @media(max-width:550px){
+    .loc-input{
+      width: 120px;
+    }
+    .loc-search{
+      width:8px;
+    }
+    .add-loc{
+      width: 35px;
+      padding: 0;
+    }
+    .userStatus{
+      width: 80px;
+      margin: none;
+    }
+  }
+  
   
   

@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import { addLocation, removeLocation } from "../requests/LocationRequest";
 
 import axios from "axios";
-const API_BASE_URL = 'https://weather-backend-amleshkumar01.onrender.com'||"http://localhost:5000/users";
+const API_BASE_URL =
+  "https://weather-backend-amleshkumar01.onrender.com/users" ||
+  "http://localhost:5000/users";
 
 function Header({
   setCity,
@@ -75,11 +77,15 @@ function Header({
           </button>
         </div>
         {localStorage.getItem("loggedIn") ? (
-          <Link to="/user">{localStorage.getItem("username")}</Link>
+          <div className="userStatus"><Link to="/user" >{localStorage.getItem("username")}</Link></div>
         ) : (
-          <Link to="/login">Login/Signup</Link>
+          <div className="userStatus"><Link to="/login" >Login/Signup</Link></div>
         )}
       </div>
+
+
+
+
       <div className="saved-location-container">
         <div className="saved-location">
           <button
@@ -95,10 +101,14 @@ function Header({
                 onClick={() => setCity(locObject.name)}
               >
                 <p>{locObject.name} </p>
-                {savedLocs.length == savedLocsWeather.length && (
+                {savedLocs.length === savedLocsWeather.length && (
                   <>
-                    <p>{savedLocsWeather[index].current.temp_c}°</p>
-                    <p>{savedLocsWeather[index].current.condition.text}</p>
+                    {savedLocsWeather[index] && (
+                      <>
+                        <p>{savedLocsWeather[index].current.temp_c}°</p>
+                        <p>{savedLocsWeather[index].current.condition.text}</p>
+                      </>
+                    )}
                   </>
                 )}
               </button>

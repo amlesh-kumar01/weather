@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import './User.css'
 function User({setUserStatus}) {
     const navigate = useNavigate();
 
@@ -14,9 +14,17 @@ function User({setUserStatus}) {
 
     return (
         <>
-            <h2>Welcome {localStorage.getItem("username")}</h2>
-            <button onClick={handleLogout}>Logout</button>
-        </>
+    <div className="welcome-container">
+        <h2 className="welcome-message">
+            Welcome {localStorage.getItem("username")}
+        </h2>
+        <p>Here You can change you Account Setting </p>
+        <button className="logout-button" onClick={handleLogout}>
+            Logout
+        </button>
+    </div>
+</>
+
     );
 }
 

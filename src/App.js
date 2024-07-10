@@ -11,7 +11,7 @@ import DailyWeather from "./components/DailyWeather";
 import ErrorMessage from "./components/ErrorMessage";
 import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
-import axios from 'axios'
+import axios from "axios";
 import User from "./Pages/User";
 
 function App() {
@@ -21,11 +21,13 @@ function App() {
   const [error, setError] = useState(null);
   const [city, setCity] = useState("Delhi");
   const [currentLoc, setCurrentLoc] = useState("Current Location");
-  const [userStatus, setUserStatus]= useState(true);
+  const [userStatus, setUserStatus] = useState(true);
 
   const [savedLocs, setSavedLocs] = useState([]);
   const [savedLocsWeather, setSavedLocsWeather] = useState([]);
-  const API_BASE_URL = 'https://weather-backend-amleshkumar01.onrender.com'||"http://localhost:5000/users";
+  const API_BASE_URL =
+    "https://weather-backend-amleshkumar01.onrender.com/users" ||
+    "http://localhost:5000/users";
 
   // Function to fetch location using IP address
   const fetchLocation = async () => {
@@ -57,7 +59,6 @@ function App() {
   useEffect(() => {
     if (city) {
       fetchData(city);
-      
     }
   }, [city]);
 
@@ -65,41 +66,41 @@ function App() {
     const getAllLocations = async () => {
       try {
         const userInfo = localStorage.getItem("userInfo");
-        const response = await axios.get(`${API_BASE_URL}/getlocs/${userInfo}`);
-        setSavedLocs([...response.data]);
+        try {
+          const response = await axios.get(
+            `${API_BASE_URL}/getlocs/${userInfo}`
+          );
+          setSavedLocs([...response.data]);
+        } catch (error) {
+          setSavedLocs([]);
+          console.log(error.message);
+        }
       } catch (error) {
-        setSavedLocs([]);
+        
         console.log(error.message);
       }
     };
     getAllLocations();
-  // eslint-disable-next-line
+    // eslint-disable-next-line
   }, [userStatus]);
 
-
-
-  useEffect(()=>{
+  useEffect(() => {
     const fetchSavedLocsData = async () => {
       try {
-        let arr=[];
+        let arr = [];
         for (let i = 0; i < savedLocs.length; i++) {
-          const wd= await getWeatherData(
-            savedLocs[i].name,
-            "/current.json"
-          );
+          const wd = await getWeatherData(savedLocs[i].name, "/current.json");
           arr.push(wd);
         }
         setSavedLocsWeather(arr);
-        console.log(savedLocsWeather)
+        console.log(savedLocsWeather);
       } catch (error) {
         setError(error.message);
       }
     };
     fetchSavedLocsData();
     // eslint-disable-next-line
-  },[savedLocs]);
-
-  
+  }, [savedLocs]);
 
   return (
     <div className="App">
@@ -113,15 +114,16 @@ function App() {
               path="/"
               element={
                 <>
-                  {(<Header
-                    city={city}
-                    setCity={setCity}
-                    savedLocs={savedLocs}
-                    setSavedLocs={setSavedLocs}
-                    currentLoc={currentLoc}
-                    savedLocsWeather={savedLocsWeather}
-                  />)}
-                  
+                  {
+                    <Header
+                      city={city}
+                      setCity={setCity}
+                      savedLocs={savedLocs}
+                      setSavedLocs={setSavedLocs}
+                      currentLoc={currentLoc}
+                      savedLocsWeather={savedLocsWeather}
+                    />
+                  }
 
                   {currentWeatherData && forecastWeatherData && (
                     <>
@@ -156,12 +158,15 @@ function App() {
               path="/login"
               element={
                 <>
-                  <Login setUserStatus ={setUserStatus}/>
+                  <Login setUserStatus={setUserStatus} />
                 </>
               }
             />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/user" element ={<User setUserStatus ={setUserStatus}/>}/>
+            <Route
+              path="/user"
+              element={<User setUserStatus={setUserStatus} />}
+            />
           </Routes>
         </Router>
       )}
