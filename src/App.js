@@ -25,7 +25,7 @@ function App() {
 
   const [savedLocs, setSavedLocs] = useState([]);
   const [savedLocsWeather, setSavedLocsWeather] = useState([]);
-  const API_BASE_URL = "http://localhost:5000/users";
+  const API_BASE_URL = 'https://weather-backend-amleshkumar01.onrender.com'||"http://localhost:5000/users";
 
   // Function to fetch location using IP address
   const fetchLocation = async () => {

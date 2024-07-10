@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { addLocation, removeLocation } from "../requests/LocationRequest";
 
 import axios from "axios";
-const API_BASE_URL = "http://localhost:5000/users";
+const API_BASE_URL = 'https://weather-backend-amleshkumar01.onrender.com'||"http://localhost:5000/users";
 
 function Header({
   setCity,
