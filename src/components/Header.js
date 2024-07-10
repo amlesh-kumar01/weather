@@ -1,24 +1,54 @@
 import React, { useState } from "react";
 import "./Header.css";
+import { Link } from "react-router-dom";
+import { addLocation, removeLocation } from "../requests/LocationRequest";
 
-function Header({ setCity, savedLocs, setSavedLocs }) {
+import axios from "axios";
+const API_BASE_URL = "http://localhost:5000/users";
+
+function Header({
+  setCity,
+  savedLocs,
+  setSavedLocs,
+  currentLoc,
+  savedLocsWeather,
+}) {
   const [inputValue, setInputValue] = useState("");
 
   const handleSearch = () => {
     setCity(inputValue);
   };
 
-  const handleAdd = () => {
-    if (inputValue && !savedLocs.includes(inputValue)) {
-      setSavedLocs([...savedLocs, inputValue]);
-      setInputValue(""); // Clear input after adding
-    }
-  };
-
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       handleSearch();
     }
+  };
+
+  const handleAdd = async () => {
+    if (inputValue && !savedLocs.includes(inputValue)) {
+      const addLocMsg = await addLocation(inputValue);
+      console.log(addLocMsg);
+      await getAllLocations();
+      // setSavedLocs([...savedLocs, inputValue]);
+      setInputValue(""); // Clear input after adding
+    }
+  };
+
+  const getAllLocations = async () => {
+    try {
+      const userInfo = localStorage.getItem("userInfo");
+      const response = await axios.get(`${API_BASE_URL}/getlocs/${userInfo}`);
+      setSavedLocs([...response.data]);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const handleDelete = async (locationName) => {
+    const deleteLocMsg = await removeLocation(locationName);
+    console.log(deleteLocMsg);
+    await getAllLocations();
   };
 
   return (
@@ -44,14 +74,47 @@ function Header({ setCity, savedLocs, setSavedLocs }) {
             Add
           </button>
         </div>
-        <a href="#">Login</a>
+        {localStorage.getItem("loggedIn") ? (
+          <Link to="/user">{localStorage.getItem("username")}</Link>
+        ) : (
+          <Link to="/login">Login/Signup</Link>
+        )}
       </div>
-      <div className="saved-location">
-        {savedLocs.map((locs) => (
-          <button key={locs} onClick={() => setCity(locs)}>
-            {locs}
+      <div className="saved-location-container">
+        <div className="saved-location">
+          <button
+            className="location-btn current-loc"
+            onClick={() => setCity(currentLoc)}
+          >
+            {currentLoc}
           </button>
-        ))}
+          {savedLocs.map((locObject, index) => (
+            <div className="savedLocs" key={index}>
+              <button
+                className="location-btn saved-loc"
+                onClick={() => setCity(locObject.name)}
+              >
+                <p>{locObject.name} </p>
+                {savedLocs.length == savedLocsWeather.length && (
+                  <>
+                    <p>{savedLocsWeather[index].current.temp_c}°</p>
+                    <p>{savedLocsWeather[index].current.condition.text}</p>
+                  </>
+                )}
+              </button>
+              <button
+                className="delete-btn"
+                onClick={() => handleDelete(locObject.name)}
+              >
+                <img
+                  src="/images/delete.png"
+                  alt="delete-icon"
+                  className="delete-icon"
+                />
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

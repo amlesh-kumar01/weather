@@ -7,8 +7,8 @@ function Days({forecastWeatherData, setDailyWeatherData, dailyWeatherData}) {
     <h2>Daily Forecast</h2>
     <div className="days">
       
-      {forecastWeatherData.forecast.forecastday.map((data) => 
-        <Link to='/dailyWeather' className="day"  onClick={()=>{setDailyWeatherData(data)}}   >
+      {forecastWeatherData.forecast.forecastday.map((data,index) => 
+        <Link to='/dailyWeather' className="day"  onClick={()=>{setDailyWeatherData(data)}} key={index}  >
           <p>{data.date.slice(5)}</p>
           <img src={data.day.condition.icon} alt="weather-condition" />
           {/* <p>{data.condition.text}</p> */}

@@ -77,22 +77,82 @@
     text-decoration: underline;
   }
   
+
+
+  .saved-location-container {
+    width: 100%;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
   .saved-location {
-    margin-top: 80px; /* To ensure it appears below the fixed header */
-    padding: 20px;
+    display: flex;
+    overflow-x: auto;
+    width: 60%;
+    background-color: inherit;
+    white-space: nowrap;
+    padding: 10px 0;
   }
   
-  .saved-location button {
-    background-color: #f8f9fa;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 8px 15px;
-    margin: 5px;
+  .savedLocs {
+    display: flex;
+    align-items: center;
+    margin-right: 20px; /* Increase space between saved location buttons */
+  }
+  
+  .location-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    color: black;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 1em;
+    white-space: nowrap;
+    font: inherit;
+    text-align: left;
+    height: 100%; /* Ensure button takes full height */
   }
   
-  .saved-location button:hover {
-    background-color: #e2e6ea;
+  .current-loc {
+    background-color: #007bff;
+    color: white;
+    min-width: 200px;
+    margin-right:20px;
   }
+  
+  .saved-loc {
+    background-color: #f0f0f0;
+    color: black;
+    margin-right: 5px; /* Smaller margin between saved location and delete button */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    min-width: 200px;
+  }
+  .saved-loc p{
+    margin:0;
+  }
+  .delete-btn {
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px; /* Ensure button takes full height */
+  }
+  
+  .delete-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
   

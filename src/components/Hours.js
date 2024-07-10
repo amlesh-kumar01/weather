@@ -4,8 +4,8 @@ function Hours({forecastWeatherData}) {
   return (
     <> <h2>Hourly Forecast</h2>
     <div className="hours">
-      {forecastWeatherData.forecast.forecastday[0].hour.filter((_,index)=> index%2).map((data) => 
-        <div className="hour">
+      {forecastWeatherData.forecast.forecastday[0].hour.filter((_,index)=> index%2).map((data,index) => 
+        <div className="hour" key={index}>
           <p>{data.time.slice(11)}</p>
           <img src={data.condition.icon} alt="weather-condition" />
           {/* <p>{data.condition.text}</p> */}
